@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizArena | Online Quiz Competition</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">Quiz<span>Arena</span></a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#competitions">Competitions</a>
+            <a href="#leaderboard">Leaderboard</a>
+        </nav>
+
+        <button class="nav-btn" onclick="showRegistration()">
+            Join Competition
+        </button>
+    </header>
+
+    <main>
+
+        <!-- HOME PAGE -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <span class="badge">🏆 ONLINE QUIZ CHAMPIONSHIP</span>
+
+                <h1>
+                    Challenge Your Mind.<br>
+                    <span>Win The Competition.</span>
+                </h1>
+
+                <p>
+                    Test your knowledge, compete with students,
+                    climb the leaderboard, and become a QuizArena champion.
+                </p>
+
+                <button class="primary-btn" onclick="showRegistration()">
+                    Start Competition →
+                </button>
+
+                <div class="hero-stats">
+                    <div>
+                        <h3>10</h3>
+                        <p>Quiz Questions</p>
+                    </div>
+
+                    <div>
+                        <h3>5 Min</h3>
+                        <p>Time Limit</p>
+                    </div>
+
+                    <div>
+                        <h3>100</h3>
+                        <p>Total Points</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hero-visual">
+                <div class="trophy">🏆</div>
+                <h2>QUIZ CHAMPION</h2>
+                <p>Think Fast. Answer Smart.</p>
+
+                <div class="floating-card">
+                    ⚡ Ready to compete?
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- COMPETITIONS -->
+
+        <section id="competitions" class="section">
+
+            <div class="section-heading">
+                <span>EXPLORE</span>
+                <h2>Available Competitions</h2>
+                <p>Choose your challenge and test your skills.</p>
+            </div>
+
+            <div class="competition-grid">
+
+                <article class="competition-card">
+                    <div class="card-icon">💻</div>
+                    <span class="tag">POPULAR</span>
+                    <h3>Programming Quiz</h3>
+                    <p>HTML, CSS, JavaScript and programming basics.</p>
+                    <div class="card-footer">
+                        <span>10 Questions</span>
+                        <button onclick="startCategory('Programming')">
+                            Play Now →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="competition-card">
+                    <div class="card-icon">🧠</div>
+                    <span class="tag">GENERAL</span>
+                    <h3>General Knowledge</h3>
+                    <p>Challenge yourself with general knowledge questions.</p>
+                    <div class="card-footer">
+                        <span>10 Questions</span>
+                        <button onclick="startCategory('General Knowledge')">
+                            Play Now →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="competition-card">
+                    <div class="card-icon">🔬</div>
+                    <span class="tag">SCIENCE</span>
+                    <h3>Science Quiz</h3>
+                    <p>Explore basic science and computer science concepts.</p>
+                    <div class="card-footer">
+                        <span>10 Questions</span>
+                        <button onclick="startCategory('Science')">
+                            Play Now →
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- REGISTRATION -->
+
+        <section id="registration" class="section hidden">
+
+            <div class="form-card">
+
+                <span class="badge">STUDENT REGISTRATION</span>
+
+                <h2>Join the Competition</h2>
+
+                <p>Enter your details to begin.</p>
+
+                <form id="registration-form">
+
+                    <label for="student-name">Student Name</label>
+                    <input
+                        type="text"
+                        id="student-name"
+                        placeholder="Enter your full name"
+                        maxlength="60"
+                        required
+                    >
+
+                    <label for="register-number">Register Number</label>
+                    <input
+                        type="text"
+                        id="register-number"
+                        placeholder="Enter register number"
+                        maxlength="30"
+                        required
+                    >
+
+                    <label for="college-name">College Name</label>
+                    <input
+                        type="text"
+                        id="college-name"
+                        placeholder="Enter college name"
+                        maxlength="100"
+                        required
+                    >
+
+                    <label for="department">Department</label>
+                    <select id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="ECE">Electronics and Communication</option>
+                        <option value="EEE">Electrical Engineering</option>
+                        <option value="MECH">Mechanical Engineering</option>
+                        <option value="OTHER">Other</option>
+                    </select>
+
+                    <button type="submit" class="primary-btn full-btn">
+                        Register & Start Quiz →
+                    </button>
+
+                </form>
+
+                <button class="back-btn" onclick="showHome()">
+                    ← Back to Home
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section id="quiz" class="section hidden">
+
+            <div class="quiz-card">
+
+                <div class="quiz-header">
+                    <div>
+                        <span class="badge" id="quiz-category">
+                            PROGRAMMING
+                        </span>
+                        <h2 id="question-number">Question 1 of 10</h2>
+                    </div>
+
+                    <div class="timer">
+                        ⏱ <span id="timer">05:00</span>
+                    </div>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progress-bar"></div>
+                </div>
+
+                <p id="quiz-student"></p>
+
+                <h2 id="question-text">Question appears here</h2>
+
+                <div id="options-container"></div>
+
+                <div class="quiz-footer">
+                    <button id="previous-btn" class="secondary-btn">
+                        ← Previous
+                    </button>
+
+                    <span id="answered-count">0 answered</span>
+
+                    <button id="next-btn" class="primary-btn">
+                        Next →
+                    </button>
+                </div>
+
+                <button id="submit-btn" class="submit-btn">
+                    Submit Competition
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULT -->
+
+        <section id="result" class="section hidden">
+
+            <div class="result-card">
+
+                <div class="result-trophy">🏆</div>
+
+                <span class="badge">COMPETITION COMPLETED</span>
+
+                <h1 id="result-heading">Well Done!</h1>
+
+                <p id="result-description"></p>
+
+                <div class="score-circle">
+                    <div>
+                        <strong id="percentage">0%</strong>
+                        <span>YOUR SCORE</span>
+                    </div>
+                </div>
+
+                <div class="result-grid">
+
+                    <div class="result-stat">
+                        <h2 id="correct">0</h2>
+                        <p>Correct</p>
+                    </div>
+
+                    <div class="result-stat">
+                        <h2 id="incorrect">0</h2>
+                        <p>Incorrect</p>
+                    </div>
+
+                    <div class="result-stat">
+                        <h2 id="marks">0/100</h2>
+                        <p>Total Marks</p>
+                    </div>
+
+                </div>
+
+                <div class="student-result">
+                    <p><strong>Student:</strong> <span id="result-name"></span></p>
+                    <p><strong>Register Number:</strong> <span id="result-register"></span></p>
+                    <p><strong>College:</strong> <span id="result-college"></span></p>
+                    <p><strong>Department:</strong> <span id="result-department"></span></p>
+                </div>
+
+                <h2 class="review-heading">Answer Review</h2>
+
+                <div id="review-container"></div>
+
+                <button class="primary-btn full-btn" onclick="showHome()">
+                    Back to Home
+                </button>
+
+                <button class="secondary-btn full-btn" onclick="restartQuiz()">
+                    Try Again ↻
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEADERBOARD -->
+
+        <section id="leaderboard" class="section">
+
+            <div class="section-heading">
+                <span>TOP PERFORMERS</span>
+                <h2>Competition Leaderboard</h2>
+                <p>See the highest scores recorded in this browser.</p>
+            </div>
+
+            <div class="leaderboard-card">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Student</th>
+                            <th>Category</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="leaderboard-body">
+                        <tr>
+                            <td colspan="4">No competition results yet.</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p class="leaderboard-note">
+                Demo version: results are stored in this browser only.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <a href="#" class="logo">Quiz<span>Arena</span></a>
+        <p>Learn. Compete. Achieve.</p>
+        <p>© 2026 QuizArena | Online Quiz Competition</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
